@@ -14,7 +14,7 @@
             "Amitav\\Watchdog\\": "src/"
         },
 	"files": [
-            "src/helpers.php"
+            "src/helper.php"
         ]
     },
     "minimum-stability": "dev",

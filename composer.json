@@ -1,24 +1,25 @@
 {
-    "name": "amitavroy/watchdog",
-    "description": "This is my watchdog package",
-    "license": "MIT",
-    "homepage": "http://amitavroy.com",
-    "authors": [
-        {
-            "name": "Amitav Roy",
-            "email": "reachme@amitavroy.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "Amitav\\Watchdog\\": "src/"
-        },
-	"files": [
-            "src/helpers.php"
-        ]
-    },
-    "minimum-stability": "dev",
-    "require": {
-    	"illuminate/support": "~5"
+  "name": "amitavroy/watchdog",
+  "description": "This is my watchdog package",
+  "license": "MIT",
+  "homepage": "http://amitavroy.com",
+  "authors": [
+    {
+      "name": "Amitav Roy",
+      "email": "reachme@amitavroy.com"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Amitav\\Watchdog\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "minimum-stability": "dev",
+  "require": {
+    "illuminate/support": "~5",
+    "oodle/krumo": "^0.5.0"
+  }
 }

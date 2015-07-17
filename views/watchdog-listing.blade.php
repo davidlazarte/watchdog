@@ -12,7 +12,6 @@
                     <tr class="info">
                         <th>Message</th>
                         <th>Level</th>
-                        <th>Variable</th>
                         <th>Incident time</th>
                         <th>View</th>
                     </tr>
@@ -21,11 +20,10 @@
                     <tbody>
                     @foreach($watchdogEntries as $entry)
                         <tr>
-                            <td>{{$entry->message}}</td>
+                            <td><a href="{{ url('watchdog/entry/' . $entry->id)  }}">{{$entry->message}}</a></td>
                             <td>{{$entry->level}}</td>
-                            <td>{{$entry->variable}}</td>
                             <td>{{$entry->incident_time}}</td>
-                            <td>View</td>
+                            <td><a href="{{ url('watchdog/entry/' . $entry->id)  }}">View</a></td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -9,4 +9,12 @@ return [
      */
     'log_limit' => 1000,
 
+    /**
+     * This configuration will extend
+     * the master template if mentioned
+     * or else it will just keep the
+     * section as content.
+     */
+    'master_template' => ''
+
 ];

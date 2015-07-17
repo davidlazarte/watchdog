@@ -8,8 +8,8 @@ if (!function_exists('watchdog')) {
      *
      * @param  string $message
      * @param  string $level
-     * @param  array $variables
-     * @return void
+     * @param null $variable
+     * @internal param array $variables
      */
     function watchdog($message, $level = 'info', $variable = null)
     {

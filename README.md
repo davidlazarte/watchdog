@@ -1,7 +1,14 @@
 #Watchdog for Laravel 5
 
-This is a developer's module which can be primarily used to record events which are happening throughout the application.
+This module will help you log messages and different events in your application and store them in the DB to check them later. The functionality is very similar to the **Watchdog** functionality of Drupal.
+ 
+To register this package with Laravel you need to add this line your provider's array:
 
-I like the Drupal's watchdog module a lot. It helps administrators and developers to get valuable information on what's happening through the application and if required they can log different activities. 
+    'Amitav\Watchdog\WatchdogServiceProvider'
+    
+This package has configuration files and migration files, so once the service provider is registered with your application, you need to run the following console command to publish the vendor files:
 
-This module will help do the same. Although it will not do anything out of the box when installed, but using the helper function **watchdog** a developer can insert events to the database and then view them on the listing page. The details page also has the functionality to display the variable during the event. So if a content was added to the application, the entire Eloquent model can be passed to the function. Watchdog will save it in DB as serialized object. And when the entry is viewed, you will be presented with the object in a human readable format using **krumo** library. 
+    php artisan vendor:publish
+    
+When done correctly, it will publish one config file "watchdog.php" inside config folder. And a migration file inside database/migrations folder.
+

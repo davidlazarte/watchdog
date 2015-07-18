@@ -30,12 +30,22 @@ class Watchdog extends Model
     /**
      * This function will return the list of watchdog entries from the DB
      *
+     * @param $args
      * @return mixed
      */
-    public function getWatchdogEntries()
+    public function getWatchdogEntries($args)
     {
-        $watchdogEntries = DB::table('watchdog')
-            ->orderBy('id', 'desc')
+        $query = DB::table('watchdog');
+
+        // checking if there are arguments present
+        // to add conditions to the query
+        if (!empty($args)) {
+            foreach ($args as $key => $value) {
+                $query->where($key, $value);
+            }
+        }
+
+        $watchdogEntries = $query->orderBy('id', 'desc')
             ->paginate(10);
 
         if ($watchdogEntries->count() > 0) {

@@ -30,15 +30,23 @@ class WatchdogController extends Controller
      * This page will show the listing of all the watchdog entries
      * currently present in the database.
      *
+     * @param Request $request
      * @return view
      */
-    public function getWatchdogListing()
+    public function getWatchdogListing(Request $request)
     {
-        watchdog('This is a watchdog entry', 'info', Watchdog::find(1));
+        watchdog('This is a watchdog entry', 'debug', Watchdog::find(1));
+
+        // checking if filter is applied and it's value
+        $args = [];
+        if ($request->input('level')) {
+            $args['level'] = $request->input('level');
+        }
+
         // fetch the listing data from the model
         $watchdog = new Watchdog;
 
-        if (!$watchdogEntries = $watchdog->getWatchdogEntries()) {
+        if (!$watchdogEntries = $watchdog->getWatchdogEntries($args)) {
             $watchdogEntries = null;
         }
 
@@ -84,5 +92,18 @@ class WatchdogController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function getFilteredResult(Request $request)
+    {
+        if (!$request->input('level')) {
+            return redirect()->back();
+        }
+
+        $string = http_build_query([
+            'level' => $request->input('level')
+        ]);
+
+        return redirect('watchdog/list?' . $string);
     }
 }

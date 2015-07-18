@@ -10,15 +10,47 @@
             @if ($watchdogEntries)
                 <p>
                     <a role="button"
+                       data-toggle="collapse" href="#collapseFilters"
+                       aria-expanded="false" aria-controls="collapseFilters">
+                        Filters
+                    </a>
+                </p>
+
+                <div class="collapse" id="collapseFilters">
+                    <div class="well">
+                        <form action="{{url('watchdog/filter')}}" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <i>Select level to filter</i>
+                            <br/>
+
+                            <select name="level" id="level">
+                                <option value="info">Info</option>
+                                <option value="warning">Warning</option>
+                                <option value="danger">Danger</option>
+                                <option value="debug">Debug</option>
+                            </select>
+                            <br/>
+
+                            <button class="btn btn-primary">Filter</button>
+
+                        </form>
+                    </div>
+                </div>
+
+                <p>
+                    <a role="button"
                        data-toggle="collapse" href="#collapseExample"
                        aria-expanded="false" aria-controls="collapseExample">
                         Clear log messages
-                    </a></p>
+                    </a>
+                </p>
 
                 <div class="collapse" id="collapseExample">
                     <div class="well">
                         <form action="{{url('watchdog/clear-log')}}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <i>This will permanently remove the log messages from the database.</i>
+                            <br/>
                             <button class="btn btn-danger">Clear log messages</button>
                         </form>
                     </div>
@@ -38,7 +70,7 @@
                     @foreach($watchdogEntries as $entry)
                         <tr>
                             <td><a href="{{ url('watchdog/entry/' . $entry->id)  }}">{{$entry->message}}</a></td>
-                            <td>{{$entry->level}}</td>
+                            <td>{{ucfirst($entry->level)}}</td>
                             <td>{{$entry->incident_time}}</td>
                             <td><a href="{{ url('watchdog/entry/' . $entry->id)  }}">View</a></td>
                         </tr>

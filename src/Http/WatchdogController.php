@@ -4,6 +4,7 @@ namespace Amitav\Watchdog\Http;
 
 use Amitav\Watchdog\Watchdog;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
@@ -18,6 +19,8 @@ class WatchdogController extends Controller
 
     public function __construct()
     {
+        // setting up the master template if configure
+        // or else it will be blank.
         if (Config::get('watchdog.master_template') != "") {
             $this->template = Config::get('watchdog.master_template');
         }
@@ -31,10 +34,13 @@ class WatchdogController extends Controller
      */
     public function getWatchdogListing()
     {
-//        watchdog('Adding new entry for variable', 'warning', Watchdog::find(1));
-        $watchdogEntries = DB::table('watchdog')
-            ->orderBy('id', 'desc')
-            ->paginate(5);
+        watchdog('This is a watchdog entry', 'info', Watchdog::find(1));
+        // fetch the listing data from the model
+        $watchdog = new Watchdog;
+
+        if (!$watchdogEntries = $watchdog->getWatchdogEntries()) {
+            $watchdogEntries = null;
+        }
 
         return view('watchdog::watchdog-listing')
             ->with('watchdogEntries', $watchdogEntries)
@@ -59,5 +65,24 @@ class WatchdogController extends Controller
         return view('watchdog::watchdog-entry')
             ->with('entry', $entry)
             ->with('template', $this->template);
+    }
+
+    /**
+     * This is the url where I am clearing the log messages
+     * when someone will click on the Clear log messages
+     * button on the listing page.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function clearWatchdogEntries(Request $request)
+    {
+        $watchdog = new Watchdog;
+
+        if (!$watchdog->clearLogMessages()) {
+            abort(500, 'The log messages were not cleared.');
+        }
+
+        return redirect()->back();
     }
 }

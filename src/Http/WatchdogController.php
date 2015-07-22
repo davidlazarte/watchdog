@@ -19,6 +19,9 @@ class WatchdogController extends Controller
 
     public function __construct()
     {
+        // this entire set of urls should be auth based.
+        $this->middleware(['auth']);
+
         // setting up the master template if configure
         // or else it will be blank.
         if (Config::get('watchdog.master_template') != "") {
@@ -35,8 +38,6 @@ class WatchdogController extends Controller
      */
     public function getWatchdogListing(Request $request)
     {
-//        watchdog('This is a watchdog entry', 'debug', Watchdog::find(1));
-
         // checking if filter is applied and it's value
         $args = [];
         if ($request->input('level')) {

@@ -35,7 +35,7 @@ class WatchdogController extends Controller
      */
     public function getWatchdogListing(Request $request)
     {
-        watchdog('This is a watchdog entry', 'debug', Watchdog::find(1));
+//        watchdog('This is a watchdog entry', 'debug', Watchdog::find(1));
 
         // checking if filter is applied and it's value
         $args = [];

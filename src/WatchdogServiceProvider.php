@@ -28,6 +28,7 @@ class WatchdogServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/config/watchdog.php' => config_path('watchdog.php'),
             __DIR__ . '/migrations/2015_07_13_000000_create_watchdog_table.php' => base_path('database/migrations/2015_07_13_000000_create_watchdog_table.php'),
+            __DIR__ . '/WatchdogCleanup.php' => app_path('Console/Commands/WatchdogCleanup.php'),
         ]);
     }
 }

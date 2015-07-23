@@ -6,7 +6,6 @@ use Amitav\Watchdog\Watchdog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
 
 class WatchdogController extends Controller
 {
@@ -20,7 +19,7 @@ class WatchdogController extends Controller
     public function __construct()
     {
         // this entire set of urls should be auth based.
-        $this->middleware(['auth']);
+        $this->middleware('auth');
 
         // setting up the master template if configure
         // or else it will be blank.
@@ -102,7 +101,7 @@ class WatchdogController extends Controller
         }
 
         $string = http_build_query([
-            'level' => $request->input('level')
+            'level' => $request->input('level'),
         ]);
 
         return redirect('watchdog/list?' . $string);

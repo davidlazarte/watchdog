@@ -18,6 +18,7 @@ if (!function_exists('watchdog')) {
         $watchdog->level = $level;
         $watchdog->variable = ($variable) ? serialize($variable) : '';
         $watchdog->incident_time = Carbon\Carbon::now();
+        $watchdog->ip_address = \Request::getClientIp();
         $watchdog->save();
     }
 }

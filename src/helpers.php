@@ -17,6 +17,7 @@ if (!function_exists('watchdog')) {
         $watchdog->message = $message;
         $watchdog->level = $level;
         $watchdog->variable = ($variable) ? serialize($variable) : '';
+        $watchdog->user = (Auth::user() != null && Auth::user()->name) ? Auth::user()->name : 'Anonymous';
         $watchdog->incident_time = Carbon\Carbon::now();
         $watchdog->ip_address = \Request::getClientIp();
         $watchdog->save();

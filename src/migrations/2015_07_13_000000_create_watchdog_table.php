@@ -17,6 +17,7 @@ class CreateWatchdogTable extends Migration
             $table->string('message')->comment('The message for the event');
             $table->string('level', 20)->comment('The event level');
             $table->text('variable')->comment('Context data in serialized format');
+            $table->string('user', 100)->comment('User who performed the event');
             $table->string('ip_address', 20)->comment('The client ip of the user');
             $table->timestamp('incident_time')->comment('When the incident happened');
         });

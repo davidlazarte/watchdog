@@ -25,6 +25,8 @@ class WatchdogController extends Controller
         // or else it will be blank.
         if (Config::get('watchdog.master_template') != "") {
             $this->template = Config::get('watchdog.master_template');
+        } else {
+            $this->template = 'watchdog::watchdog-master';
         }
     }
 

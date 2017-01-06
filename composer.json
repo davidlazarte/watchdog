@@ -23,6 +23,6 @@
   "minimum-stability": "dev",
   "require": {
     "illuminate/support": "~5",
-    "oodle/krumo": "^0.5.0"
+    "mmucklo/krumo": "*"
   }
 }

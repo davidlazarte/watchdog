@@ -11,7 +11,7 @@ if (!function_exists('watchdog')) {
      * @param null $variable
      * @internal param array $variables
      */
-    function watchdog($type, $message, $level = 1, $variable = null)
+    function watchdog($type, $message, $level = 7, $variable = null)
     {
         $user = Auth::user();
         $watchdog = new davidlazarte\Watchdog\Watchdog;

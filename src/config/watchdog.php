@@ -15,12 +15,12 @@ return [
      * or else it will just keep the
      * section as content.
      */
-    'master_template' => ''
+    'master_template' => '',
 
     /*
      * This configuration will extend
      * the user model
     */
-    'user' => 'App\User'
+    'user' => 'App\User',
 
 ];

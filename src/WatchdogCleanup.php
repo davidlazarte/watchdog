@@ -1,12 +1,12 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: amitav
- * Date: 7/22/15
+ * User: davidlazarte
+ * Date: 1/6/17
  * Time: 10:37 AM
  */
 
-namespace Amitav\Watchdog;
+namespace davidlazarte\Watchdog;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;

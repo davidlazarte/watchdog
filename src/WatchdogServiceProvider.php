@@ -1,6 +1,6 @@
 <?php
 
-namespace Amitav\Watchdog;
+namespace davidlazarte\Watchdog;
 
 use Illuminate\Support\ServiceProvider;
 

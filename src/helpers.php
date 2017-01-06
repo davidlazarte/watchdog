@@ -11,13 +11,17 @@ if (!function_exists('watchdog')) {
      * @param null $variable
      * @internal param array $variables
      */
-    function watchdog($message, $level = 'info', $variable = null)
+    function watchdog($type, $message, $level = 1, $variable = null)
     {
-        $watchdog = new Amitav\Watchdog\Watchdog;
+        $user = Auth::user();
+        $watchdog = new davidlazarte\Watchdog\Watchdog;
         $watchdog->message = $message;
-        $watchdog->level = $level;
+        $watchdog->watchdog_level_id = $level;
         $watchdog->variable = ($variable) ? serialize($variable) : '';
-        $watchdog->user = (Auth::user() != null && Auth::user()->name) ? Auth::user()->name : 'Anonymous';
+        
+        if (user)
+            $watchdog->use_id = $user->id;
+        
         $watchdog->incident_time = Carbon\Carbon::now();
         $watchdog->ip_address = \Request::getClientIp();
         $watchdog->save();

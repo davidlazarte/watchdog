@@ -1,8 +1,8 @@
 <?php
 
-namespace Amitav\Watchdog\Http;
+namespace davidlazarte\Watchdog\Http;
 
-use Amitav\Watchdog\Watchdog;
+use davidlazarte\Watchdog\Watchdog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;

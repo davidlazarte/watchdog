@@ -1,17 +1,20 @@
 {
-  "name": "amitavroy/watchdog",
+  "name": "davidlazarte/watchdog",
   "description": "This is my watchdog package",
   "license": "MIT",
-  "homepage": "http://amitavroy.com",
   "authors": [
     {
       "name": "Amitav Roy",
       "email": "reachme@amitavroy.com"
     }
+    {
+      "name": "David Lazarte",
+      "email": "david.lazarte@gmail.com"
+    }
   ],
   "autoload": {
     "psr-4": {
-      "Amitav\\Watchdog\\": "src/"
+      "davidlazarte\\Watchdog\\": "src/"
     },
     "files": [
       "src/helpers.php"

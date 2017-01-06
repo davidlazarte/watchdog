@@ -17,4 +17,10 @@ return [
      */
     'master_template' => ''
 
+    /*
+     * This configuration will extend
+     * the user model
+    */
+    'user' => 'App\User'
+
 ];

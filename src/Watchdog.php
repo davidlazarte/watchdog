@@ -1,6 +1,6 @@
 <?php
 
-namespace Amitav\Watchdog;
+namespace davidlazarte\Watchdog;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +25,17 @@ class Watchdog extends Model
      *
      * @var array
      */
-    protected $fillable = ['message', 'info', 'variable', 'incident_time'];
+    protected $fillable = ['type', 'message', 'info', 'variable', 'incident_time'];
+
+    /**
+     * User.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasOne
+     */
+    public function user()
+    {
+        return $this->belongsTo(Config::get('watchdog.user'));
+    }
 
     /**
      * This function will return the list of watchdog entries from the DB

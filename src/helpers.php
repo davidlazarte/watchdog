@@ -17,9 +17,9 @@ if (!function_exists('watchdog')) {
         $watchdog = new davidlazarte\Watchdog\Watchdog;
         $watchdog->message = $message;
         $watchdog->watchdog_level_id = $level;
-        $watchdog->variable = ($variable) ? serialize($variable) : '';
+        $watchdog->variables = $variables;
         
-        if (user)
+        if ($user)
             $watchdog->use_id = $user->id;
         
         $watchdog->incident_time = Carbon\Carbon::now();

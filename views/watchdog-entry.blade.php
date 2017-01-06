@@ -36,7 +36,7 @@
             @if($entry->variable != '')
             <tr>
                 <td>Variable</td>
-                <td>{{krumo(unserialize($entry->variable))}}</td>
+                <td>{{krumo($entry->variables)}}</td>
             </tr>
             @endif
         </table>

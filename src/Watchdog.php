@@ -25,7 +25,17 @@ class Watchdog extends Model
      *
      * @var array
      */
-    protected $fillable = ['type', 'message', 'info', 'variable', 'incident_time'];
+    protected $fillable = ['type', 'message', 'info', 'variables', 'incident_time'];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'variables' => 'object',
+    ];
+
 
     /**
      * User.

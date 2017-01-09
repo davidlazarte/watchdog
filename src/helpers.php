@@ -22,7 +22,7 @@ if (!function_exists('watchdog')) {
         $watchdog->variables = $variables;
         
         if ($user)
-            $watchdog->use_id = $user->id;
+            $watchdog->user_id = $user->id;
         
         $watchdog->incident_time = Carbon\Carbon::now();
         $watchdog->ip_address = \Request::getClientIp();
